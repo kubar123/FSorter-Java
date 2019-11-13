@@ -9,6 +9,7 @@ import java.util.Enumeration;
 import java.util.logging.Logger;
 import javax.swing.AbstractButton;
 import javax.swing.ButtonModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -206,9 +207,13 @@ public class WindowMain extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Help");
-        jMenu2.setActionCommand("Help");
 
         jMenuItem2.setText("About");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
@@ -236,6 +241,12 @@ public class WindowMain extends javax.swing.JFrame {
     private void jTxtCustomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCustomActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtCustomActionPerformed
+
+    // ABOUT BUTTON
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(rootPane, "Made by: Jake Rybicki\nKubar123", "About",HEIGHT);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
