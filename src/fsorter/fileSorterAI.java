@@ -95,8 +95,8 @@ public class fileSorterAI {
                     sortAudio(file, newFolderName+"-Audio", fileExt);
                     sortVideo(file, newFolderName+"-Video", fileExt);
                     sortImage(file, newFolderName+"-Image", fileExt);
-                    sortDocs(file, newFolderName+"-Documents", fileExt);
                     sortText(file, newFolderName+"-Text", fileExt);
+                    sortDocs(file, newFolderName+"-Documents", fileExt);
                     sortArchive(file, newFolderName+"-Archive", fileExt);
                     break;
            }
