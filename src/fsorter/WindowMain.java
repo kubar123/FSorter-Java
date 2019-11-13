@@ -266,9 +266,7 @@ public class WindowMain extends javax.swing.JFrame {
                 // TODO add your handling code here:
                 URI uri=new URI("https://github.com/kubar123/FSorter-Java");
                 java.awt.Desktop.getDesktop().browse(uri);
-            } catch (URISyntaxException ex) {
-                Logger.getLogger(WindowMain.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
+            } catch (URISyntaxException | IOException ex) {
                 Logger.getLogger(WindowMain.class.getName()).log(Level.SEVERE, null, ex);
             }
 
