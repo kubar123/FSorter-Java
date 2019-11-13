@@ -5,7 +5,11 @@
  */
 package fsorter;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Enumeration;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractButton;
 import javax.swing.ButtonModel;
@@ -59,6 +63,7 @@ public class WindowMain extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FSorter");
@@ -216,6 +221,14 @@ public class WindowMain extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem2);
 
+        jMenuItem3.setText("View my work");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem3);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -244,9 +257,22 @@ public class WindowMain extends javax.swing.JFrame {
 
     // ABOUT BUTTON
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+        // TODO rename method
         JOptionPane.showMessageDialog(rootPane, "Made by: Jake Rybicki\nKubar123", "About",HEIGHT);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+            try {
+                // TODO add your handling code here:
+                URI uri=new URI("https://github.com/kubar123/FSorter-Java");
+                java.awt.Desktop.getDesktop().browse(uri);
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(WindowMain.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(WindowMain.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -320,6 +346,7 @@ public class WindowMain extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
