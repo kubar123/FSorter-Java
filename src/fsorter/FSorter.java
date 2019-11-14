@@ -136,7 +136,12 @@ public class FSorter extends TransferHandler {
         main.setJLabelInfo(sortedFiles+" files moved");
     }
     
-    
+    public static void resetApp(){
+        fileCount=0;
+        files=null;
+        isFileDropped=false;
+        main.setJLabelInfo("Drop folder");
+    }
 
     
 
