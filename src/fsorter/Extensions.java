@@ -9,7 +9,7 @@ import java.util.EnumSet;
 
 /**
  *
- * @author Admin              
+ * @author Jake Rybicki <Jake at lansoftprogramming.com>
  */
 public class Extensions {
 //    public static class Graphics{

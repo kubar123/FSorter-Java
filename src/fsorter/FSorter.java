@@ -17,13 +17,12 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
- * @author Jakub Rybicki <Jake at lansoftprogramming.com>
+ * @author Jake Rybicki <Jake at lansoftprogramming.com>
  */
 public class FSorter extends TransferHandler {
 
     private static boolean isFileDropped=false;
-//    private static boolean isAnyFi=false;
-    private static List<File> files=null;    
+    private static List<File> files=null;
     private static int fileCount=0; // Counter for qty of moved files
     private static WindowMain main;
 
@@ -49,10 +48,10 @@ public class FSorter extends TransferHandler {
         List<File> info=Arrays.asList(files.get(0).listFiles());
         return info;
     }
-// ------------------------------------------------------------
+// -----------------------------------------------------------------------
    
     
-    /**
+    /** --------------------- MAIN ----------------------------------------
      * @param args the command line arguments
      * arg 0= files to sort [audio | Video | Image | Text | Archive
      *          | Docs | ALL | Etc. (MAX one selection.)
@@ -84,12 +83,10 @@ public class FSorter extends TransferHandler {
         
         //start accepting dropped items
         main.setTransferHandler(new FileDropHandler());
-        
-        
-        
-        
+          
     }
     
+    //prints the info to output for debugging purposes
     public static void echoInfo(){
         if(isFileDropped)
             for (File file: FSorter.files) {
@@ -99,6 +96,8 @@ public class FSorter extends TransferHandler {
             }
     }
     
+    //main 'start' method. Will check pre requisites and call the necessary
+    //      methods to sort files or folder.
     public static void startSorting(){
         // ---- File drop check ----
         if(!isFileDropped){
@@ -107,12 +106,13 @@ public class FSorter extends TransferHandler {
                     + " or files into the application","No files loaded",JOptionPane.ERROR_MESSAGE);
             return;
         }
-    // ---- START SORTING ----
+    // ---- STARTING TO SORT ----
         
         // display message to user
-        main.setJLabelInfo("Sorting...");
-        LOGGER.info("starting the sorting...");
+        main.setJLabelInfo("Sorting...");       //gui
+        LOGGER.info("starting the sorting..."); //log
         
+        //TODO Uneeded? 
         boolean sortFolder= fileCount==1;
         
         int sortedFiles=0;
@@ -136,6 +136,7 @@ public class FSorter extends TransferHandler {
         main.setJLabelInfo(sortedFiles+" files moved");
     }
     
+    //reset the app - may need to be ran after every new sort
     public static void resetApp(){
         fileCount=0;
         files=null;
@@ -156,7 +157,7 @@ public class FSorter extends TransferHandler {
     
     
     // when program starts it may start with an argument
-    // Try/catch block - .isEmpty() crashes if ... its empty
+    // Try/catch block needed due to  .isEmpty() crashing if ... its empty
     private static boolean IsArgumentUsed(String[] args) {
         // ----------------- ARGUMENT PIPE ---------------------
         // if program started using arguments...

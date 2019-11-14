@@ -52,10 +52,12 @@ public class fileSorterAI {
          
          for(File file:files){
 
-// -- if curr file is a folder, skip it. (no extension -  would crash).
+//  skip folders (they have no extension -  would crash).
             if(file.isDirectory())
                 continue;
-            
+            //-------
+           
+        //not a folder, get extension
             String fileExt=getExtension(file);
                 
             switch (selectedSorting.toLowerCase()){
@@ -164,17 +166,18 @@ public class fileSorterAI {
      // --------------------------- END SORTING -----------------------------
      
      
-     // Moves file to a new 
+     // Moves file to the specified folder. Creates it if doesnt exit.
      private static void moveFileToNewFolder(File file, String newFolderName) {
         File newSaveLocation=new File(file.getParent()+"\\"+newFolderName);
         File newSave2Location=new File(newSaveLocation+"\\"+file.getName());
+        
         //Make new folder if not made
         boolean isDirCreated=newSaveLocation.mkdir();
         
         if(isDirCreated)
             LOGGER.info("New folder was created");
         
-        try {
+        try {// attempt to move the files
             Files.move(file.toPath(), newSave2Location.toPath(),REPLACE_EXISTING );
         } catch (IOException ex) {
             Logger.getLogger(FSorter.class.getName()).log(Level.SEVERE, null, ex);
