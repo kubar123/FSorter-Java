@@ -64,7 +64,7 @@ public class FSorter extends TransferHandler {
      */
     public static void main(String[] args) {
         // If arguments used, show no GUI, and run *using cmd output*
-        System.out.println(args.length);
+        LOGGER.log(Level.INFO, "Using {0} arguments", args.length);
         if(IsArgumentUsed(args)){
              WindowCmd.parseAndSortUsingCMD(args);
              System.exit(0);
@@ -166,7 +166,6 @@ public class FSorter extends TransferHandler {
             }
             return true;
         }catch(Exception exc){
-            System.out.println(exc.toString());
             return false;
         }
         
