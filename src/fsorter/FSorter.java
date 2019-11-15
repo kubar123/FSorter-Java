@@ -5,6 +5,7 @@
  */
 package fsorter;
 
+import fsorter.GUI.WindowMain;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
@@ -129,7 +130,7 @@ public class FSorter extends TransferHandler {
             customExt=main.getjTxtCustom();
         
         //echoInfo();
-        sortedFiles=fileSorterAI.startSorting(customExt,fileToSort,
+        sortedFiles=FileSorterAI.startSorting(customExt,fileToSort,
                 main.getjNewFolderLocation());
         
         

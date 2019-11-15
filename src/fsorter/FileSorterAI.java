@@ -6,6 +6,7 @@
 package fsorter;
 
 //import static fsorter.FSorter.files;
+import fsorter.ExtManager.Extensions;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -22,7 +23,7 @@ import java.util.regex.Pattern;
  *
  * @author Jake Rybicki <Jake at lansoftprogramming.com>
  */
-public class fileSorterAI {
+public class FileSorterAI {
     private static final Logger LOGGER = Logger.getLogger(FSorter.class.getName());
     
     private static int sortedFiles=0;
@@ -32,7 +33,7 @@ public class fileSorterAI {
     }
 
     public static void setSortedFiles(int sortedFiles) {
-        fileSorterAI.sortedFiles = sortedFiles;
+        FileSorterAI.sortedFiles = sortedFiles;
     }
     
     public static void resetFileCount(){

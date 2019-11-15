@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class WindowCmd {
     public static int startSorting(String sortingSelection, String sortingName, List<File> files){
-        return fileSorterAI.startSorting(sortingSelection, files, sortingName);
+        return FileSorterAI.startSorting(sortingSelection, files, sortingName);
         
         // use contents of folder if is a folder
 //        List<File>fileToSort=files;
