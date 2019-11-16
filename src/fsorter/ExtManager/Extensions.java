@@ -72,7 +72,7 @@ public class Extensions {
     }
     public enum Text{
         _0, _1ST,_600,_602,_ABW,_ACL,_AFP,_AMI,_Amigaguid,_ANS,_ASC,_AWW,_CCF,
-        _CSV,_CWK,_DBK,_DITA,_DOC,_DOCM,_DOCX,_DOT,_DOTX,_EGT,_EPUB,_EZW,_FDX,
+        _CSV,_CWK,_DBK,_DITA,_DOC,_DOCM,_DOT,_DOTX,_EGT,_EPUB,_EZW,_FDX,
         _FTM,_FTX,_GDOC,_HTML,_HWP,_HWPML,_LOG,_LWP,_MBP,_MD,_ME,_MCW,_Mobi,
         _NB,_NBP,_NEIS,_ODM,_ODOC,_ODT,_OSHEET,_OTT,_OMM,_PAGES,_PAP,_PDAX,_PDF,
         _QUOX,_Radix,_RTF,_RPT,_SDW,_SE,_STW,_Sxw,_TeX,_INFO,_Troff,_TXT,_UOF,
