@@ -227,6 +227,7 @@ public class WindowMain extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem2);
 
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsorter/Assets/GitHub-Mark-16px.png"))); // NOI18N
         jMenuItem3.setText("View my work");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
