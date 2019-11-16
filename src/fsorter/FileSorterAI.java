@@ -119,7 +119,7 @@ public class FileSorterAI {
             // remove first char from enum string (enum starts with ' _ ')
             if(currExt.toString().substring(1).equalsIgnoreCase(fileExt)){
                 moveFileToNewFolder(file, newFolderName);
-                sortedFiles++;
+                //sortedFiles++;
             }
         }
      }
@@ -128,7 +128,7 @@ public class FileSorterAI {
             // remove first char from enum string (enum starts with ' _ ')
             if(currExt.toString().substring(1).equalsIgnoreCase(fileExt)){
                 moveFileToNewFolder(file, newFolderName);
-                sortedFiles++;
+                //sortedFiles++;
             }
         }
      }
@@ -136,7 +136,7 @@ public class FileSorterAI {
          for(Extensions.Image info:Extensions.Image.values()){
             if(info.toString().substring(1).equalsIgnoreCase(fileExt)){
                 moveFileToNewFolder(file,newFolderName);
-                sortedFiles++;
+                //sortedFiles++;
             }
         }
      }
@@ -144,7 +144,7 @@ public class FileSorterAI {
          for(Extensions.Text info:Extensions.Text.values()){
             if(info.toString().substring(1).equalsIgnoreCase(fileExt)){
                 moveFileToNewFolder(file,newFolderName);
-                sortedFiles++;
+                //sortedFiles++;
             }
         }
      }
@@ -152,7 +152,7 @@ public class FileSorterAI {
         for(Extensions.Archive info:Extensions.Archive.values()){
             if(info.toString().substring(1).equalsIgnoreCase(fileExt)){
                 moveFileToNewFolder(file,newFolderName);
-                sortedFiles++;
+                //sortedFiles++;
             }
         }
      }
@@ -160,7 +160,7 @@ public class FileSorterAI {
          for(Extensions.Docs info:Extensions.Docs.values()){
             if(info.toString().substring(1).equalsIgnoreCase(fileExt)){
                 moveFileToNewFolder(file,newFolderName);
-                sortedFiles++;
+                //sortedFiles++;
             }
         }
      }
@@ -180,8 +180,10 @@ public class FileSorterAI {
         
         try {// attempt to move the files
             Files.move(file.toPath(), newSave2Location.toPath(),REPLACE_EXISTING );
+            sortedFiles++;
         } catch (IOException ex) {
-            Logger.getLogger(FSorter.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(FSorter.class.getName()).log(Level.SEVERE, null, ex);
+            LOGGER.info("file was already moved: "+file.toString());
         }
     }
      
