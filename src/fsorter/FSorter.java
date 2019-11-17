@@ -5,6 +5,7 @@
  */
 package fsorter;
 
+import fsorter.DAL.CheckForUpdate;
 import fsorter.GUI.WindowMain;
 import java.io.File;
 import java.util.Arrays;
@@ -63,7 +64,7 @@ public class FSorter extends TransferHandler {
      *              
      */
     public static void main(String[] args) {
-        
+        CheckForUpdate.getVersionfromURL();
         // --- debug --- check for new versions
         if(VERSION_NO==1);
         
