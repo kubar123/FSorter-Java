@@ -64,9 +64,7 @@ public class FSorter extends TransferHandler {
      *              
      */
     public static void main(String[] args) {
-        String latestVersionNo=CheckForUpdate.getVersionfromURL();
-        // --- debug --- check for new versions
-        if(VERSION_NO==1);
+        
         
         // If arguments used, show no GUI, and run *using cmd output*
         LOGGER.log(Level.INFO, "Using {0} arguments", args.length);
@@ -89,7 +87,16 @@ public class FSorter extends TransferHandler {
         
         //start accepting dropped items
         main.setTransferHandler(new FileDropHandler());
-          
+        
+        
+        //TODO enable/disable setting
+        // check for updates
+        checkForUpdates();
+    }
+    private static void checkForUpdates(){
+        String latestVersionNo=CheckForUpdate.getVersionfromURL();
+        // --- debug --- check for new versions
+        //if(VERSION_NO==1);
     }
     
     //prints the info to output for debugging purposes

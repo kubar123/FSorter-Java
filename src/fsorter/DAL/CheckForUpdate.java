@@ -32,8 +32,10 @@ public class CheckForUpdate {
             String tagv=getTagFromUrlString(readUrl(UPDATE_URL));
             LOGGER.log(Level.INFO, "latest version is: {0}", tagv);
             
+            
             //remove 'v' and '.' from version number
-            //System.out.println(tagv.substring(1));
+            int versionNumber=parseVersionNumber(tagv);
+            System.out.println(versionNumber);
             
         } catch (Exception ex) {
             LOGGER.warning("Looking for new versions error: \n "+ex.toString());
@@ -65,5 +67,16 @@ public class CheckForUpdate {
         // tag_name = version number in GitHub
         String versionNo=json.getString("tag_name");
         return  versionNo.toString();
+    }
+
+    //takes Github version tag (ie. v1.8.0.1) and returns a normalized form:
+    //          
+    private static int parseVersionNumber(String str) {
+        //remove 'v' from string
+        String normalStr=str.substring(1);
+        //replace all "." with nothing for comparing int with < and >
+        normalStr=normalStr.replace(".","");
+        
+        return Integer.parseInt(normalStr);        
     }
 }
