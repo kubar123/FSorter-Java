@@ -64,7 +64,7 @@ public class FSorter extends TransferHandler {
      *              
      */
     public static void main(String[] args) {
-        CheckForUpdate.getVersionfromURL();
+        String latestVersionNo=CheckForUpdate.getVersionfromURL();
         // --- debug --- check for new versions
         if(VERSION_NO==1);
         

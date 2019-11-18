@@ -30,10 +30,10 @@ public class CheckForUpdate {
         try {
             //get JSON data
             String tagv=getTagFromUrlString(readUrl(UPDATE_URL));
-            LOGGER.log(Level.INFO, "latest version found: {0}", tagv);
+            LOGGER.log(Level.INFO, "latest version is: {0}", tagv);
             
-            //remove 'v' from version number
-            //return tagv.substring(1);
+            //remove 'v' and '.' from version number
+            //System.out.println(tagv.substring(1));
             
         } catch (Exception ex) {
             LOGGER.warning("Looking for new versions error: \n "+ex.toString());
@@ -44,21 +44,22 @@ public class CheckForUpdate {
     private static String readUrl(String urlString) throws Exception {
         BufferedReader reader=null;
         try {
-            URL url = new URL(urlString);
-            reader = new BufferedReader(new InputStreamReader(url.openStream()));
+            reader = new BufferedReader(new InputStreamReader(new URL(urlString).openStream()));
             StringBuilder buffer = new StringBuilder();
             int read;
+            //not sure why it's needed. Setting 0 or -1 results in loop
             char[] chars = new char[1];
             while ((read = reader.read(chars)) != -1)
                 buffer.append(chars, 0, read); 
-
+            
             return buffer.toString();
-        } finally {
+        } finally {//always end connection
             if (reader != null)
             reader.close();
         }
     }
     
+    //Gets the TAG (aka version tag) from Github URL
     private static String getTagFromUrlString(String urlData){
         JSONObject json = new JSONObject(urlData);
         // tag_name = version number in GitHub
