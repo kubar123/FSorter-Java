@@ -200,6 +200,7 @@ public class WindowMain extends javax.swing.JFrame {
 
         jChkIgnoreNestedFolders.setSelected(true);
         jChkIgnoreNestedFolders.setText("Recursive sorting");
+        jChkIgnoreNestedFolders.setEnabled(false);
         jChkIgnoreNestedFolders.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jPanel3.add(jChkIgnoreNestedFolders, new java.awt.GridBagConstraints());
 
