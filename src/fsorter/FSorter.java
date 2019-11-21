@@ -22,7 +22,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Jake Rybicki <Jake at lansoftprogramming.com>
  */
 public class FSorter extends TransferHandler {
-    private static final double VERSION_NO=0.1;
+    private static final String VERSION_NO="0.1.1";
     private static boolean isFileDropped=false;
     private static List<File> files=null;
     private static int fileCount=0; // Counter for qty of moved files
@@ -91,13 +91,14 @@ public class FSorter extends TransferHandler {
         
         //TODO enable/disable setting
         // check for updates
-        checkForUpdates();
+        int isNewUpdateAvailable=CheckForUpdate.isNewUpdateAvailable(VERSION_NO);
+        
     }
-    private static void checkForUpdates(){
-        String latestVersionNo=CheckForUpdate.getVersionfromURL();
-        // --- debug --- check for new versions
-        //if(VERSION_NO==1);
-    }
+//    private static void checkForUpdates(){
+//        String latestVersionNo=CheckForUpdate.getVersionfromURL();
+//        // --- debug --- check for new versions
+//        //if(VERSION_NO==1);
+//    }
     
     //prints the info to output for debugging purposes
     public static void echoInfo(){

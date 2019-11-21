@@ -9,6 +9,7 @@ import fsorter.FSorter;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.*;
@@ -34,9 +35,9 @@ public class CheckForUpdate {
             
             
             //remove 'v' and '.' from version number
-            int versionNumber=parseVersionNumber(tagv);
-            System.out.println(versionNumber);
-            
+            //int versionNumber=parseVersionNumber(tagv);
+            //System.out.println(versionNumber);
+            return tagv;
         } catch (Exception ex) {
             LOGGER.warning("Looking for new versions error: \n "+ex.toString());
         }
@@ -78,5 +79,45 @@ public class CheckForUpdate {
         normalStr=normalStr.replace(".","");
         
         return Integer.parseInt(normalStr);        
+    }
+    
+    
+    //TODO: MAKE NEW PARSEVERSIONNUMBER METHOD
+    // -- Cannot compare versions numbers by trimming "." - 1.10.1 (1,101) < 1.19 (119)
+    // FIX:                                             expected result: >
+    // split into arry where "." are splitter
+    // compare each number in array against local verNo
+    
+    
+    //return int:
+    // 1 = new major version
+    // 2 = new minor version
+    // 3 = new patch
+    // 0 = latest version installed
+    public static int isNewUpdateAvailable(String localVersionStr){
+        //get version from URL
+        String externalVersionStr=getVersionfromURL();
+        //remove 'v' from srt
+        externalVersionStr=externalVersionStr.substring(1);
+        
+        //turn Strings into arrays
+        String[] localVersionInt=localVersionStr.split("\\.");
+        String[] externalVersionInt=externalVersionStr.split("\\.");
+        //DEBUG PRINT:
+        System.out.println(Arrays.toString(localVersionInt));
+        System.out.println(Arrays.toString(externalVersionInt));
+
+        if(Integer.parseInt(localVersionInt[0])<Integer.parseInt(externalVersionInt[0])){
+            System.out.println("new major version around");
+            return 1;
+        }else if(Integer.parseInt(localVersionInt[1])<Integer.parseInt(externalVersionInt[1])) {
+            System.out.println("new minor version around2");
+            return 2;
+        }else if(Integer.parseInt(localVersionInt[2])<Integer.parseInt(externalVersionInt[2])){
+            System.out.println("new patch around");
+            return 3;
+        }else{
+            return 0;
+        }
     }
 }
