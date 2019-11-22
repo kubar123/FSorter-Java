@@ -26,7 +26,7 @@ public class CheckForUpdate {
     // test URL TODO: change to FSorter Git URL
     private static final String UPDATE_URL="https://api.github.com/repos/kubar123/magneticKelp/releases/latest";
     private static final Logger LOGGER = Logger.getLogger(FSorter.class.getName());
-    
+    public static String lastUsedBodyTxt=null;
     public static String getVersionfromURL(){
         try {
             //get JSON data
@@ -67,6 +67,7 @@ public class CheckForUpdate {
         JSONObject json = new JSONObject(urlData);
         // tag_name = version number in GitHub
         String versionNo=json.getString("tag_name");
+        lastUsedBodyTxt=json.getString("body");
         return  versionNo.toString();
     }
 

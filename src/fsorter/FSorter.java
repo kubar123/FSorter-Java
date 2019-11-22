@@ -6,7 +6,9 @@
 package fsorter;
 
 import fsorter.DAL.CheckForUpdate;
+import fsorter.GUI.GuiManager;
 import fsorter.GUI.WindowMain;
+import fsorter.GUI.WindowNewUpdate;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
@@ -93,6 +95,12 @@ public class FSorter extends TransferHandler {
         // check for updates
         int isNewUpdateAvailable=CheckForUpdate.isNewUpdateAvailable(VERSION_NO);
         
+        //show GUI UI 
+        if(isNewUpdateAvailable>0)
+            GuiManager.printUpdateMessage(isNewUpdateAvailable);
+        WindowNewUpdate mainUpdate=new WindowNewUpdate(main, true,isNewUpdateAvailable,CheckForUpdate.lastUsedBodyTxt);
+        mainUpdate.setVisible(true);
+        
     }
 //    private static void checkForUpdates(){
 //        String latestVersionNo=CheckForUpdate.getVersionfromURL();
@@ -126,7 +134,7 @@ public class FSorter extends TransferHandler {
         main.setJLabelInfo("Sorting...");       //gui
         LOGGER.info("starting the sorting..."); //log
         
-        //TODO Uneeded? 
+        //TODO Unneeded? 
         boolean sortFolder= fileCount==1;
         
         int sortedFiles=0;

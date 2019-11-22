@@ -5,6 +5,9 @@
  */
 package fsorter.GUI;
 
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+
 /**
  *
  * @author Jakub Rybicki <Jake at lansoftprogramming.com>
@@ -17,6 +20,19 @@ public class WindowNewUpdate extends javax.swing.JDialog {
     public WindowNewUpdate(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        //this.jLabelTop.setText(newVer+"");
+        //this.JTxtPaneInfo.setText(infoText);
+    }
+    
+    public WindowNewUpdate(java.awt.Frame parent, boolean modal, int newVer,String infoText) {
+        super(parent, modal);
+        initComponents();
+        if(newVer==1)       this.jLabelTop.setText("New major update available");
+        else if (newVer==2) this.jLabelTop.setText("New minor update available");
+        else if (newVer==3) this.jLabelTop.setText("New patch available");
+
+        //this.jLabelTop.setText(newVer+"");
+        this.JTxtPaneInfo.setText(infoText);
     }
 
     /**
@@ -28,17 +44,54 @@ public class WindowNewUpdate extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelTop = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        JTxtPaneInfo = new javax.swing.JTextPane();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
+
+        jLabelTop.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTop.setText("A new version is available");
+        jLabelTop.setPreferredSize(new java.awt.Dimension(9999, 14));
+
+        jButton1.setText("Cancel");
+
+        jButton2.setText("Download");
+
+        JTxtPaneInfo.setText("amazing");
+        jScrollPane1.setViewportView(JTxtPaneInfo);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jLabelTop, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 230, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addContainerGap())
         );
 
         pack();
@@ -86,6 +139,19 @@ public class WindowNewUpdate extends javax.swing.JDialog {
         });
     }
 
+    public void setjLabelTop(JLabel jLabelTop) {
+        this.jLabelTop = jLabelTop;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextPane JTxtPaneInfo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabelTop;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
