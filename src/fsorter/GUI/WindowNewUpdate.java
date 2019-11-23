@@ -61,6 +61,7 @@ public class WindowNewUpdate extends javax.swing.JDialog {
 
         jButton2.setText("Download");
 
+        JTxtPaneInfo.setEditable(false);
         JTxtPaneInfo.setText("amazing");
         jScrollPane1.setViewportView(JTxtPaneInfo);
 
