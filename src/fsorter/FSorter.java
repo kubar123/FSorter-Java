@@ -66,17 +66,43 @@ public class FSorter extends TransferHandler {
      *              
      */
     public static void main(String[] args) {
+        //if args exist, do not show GUI; use CMD methods
+        argumentCheck(args);
+                
+        makeAndSowMainWindow();
+        
+        //start accepting dropped items
+        main.setTransferHandler(new FileDropHandler());
         
         
-        // If arguments used, show no GUI, and run *using cmd output*
+        
+        // check for updates
+        int isNewUpdateAvailable=CheckForUpdate.isNewUpdateAvailable(VERSION_NO);
+        //show new update GUI
+        if(isNewUpdateAvailable>0){
+            GuiManager.printUpdateMessage(isNewUpdateAvailable);
+            WindowNewUpdate mainUpdate=new WindowNewUpdate(main, true,isNewUpdateAvailable,
+                CheckForUpdate.getLastBodyTxt(), CheckForUpdate.getLastTagv());
+       
+            mainUpdate.setVisible(true);
+        }
+        
+    }
+    
+    //checks if the program uses arguments, if so runs the CMD methods
+    private static void argumentCheck(String[] args){
         LOGGER.log(Level.INFO, "Using {0} arguments", args.length);
+        // If arguments used, show no GUI, and run *using cmd output*
         if(IsArgumentUsed(args)){
              WindowCmd.parseAndSortUsingCMD(args);
              System.exit(0);
         }
-        
+    }
+    
+    //makes the GUI, sets the look and feel and shows it
+    private static void makeAndSowMainWindow() {
         //make UI Pretty
-        try {
+       try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | 
                 IllegalAccessException | UnsupportedLookAndFeelException ex) {
@@ -84,26 +110,7 @@ public class FSorter extends TransferHandler {
         }
         // make UI window
         main=new WindowMain();
-        main.setVisible(true);
-
-        
-        //start accepting dropped items
-        main.setTransferHandler(new FileDropHandler());
-        
-        
-        //TODO enable/disable setting
-        // check for updates
-        int isNewUpdateAvailable=CheckForUpdate.isNewUpdateAvailable(VERSION_NO);
-        
-        //show GUI UI 
-        if(isNewUpdateAvailable>0){
-            GuiManager.printUpdateMessage(isNewUpdateAvailable);
-        WindowNewUpdate mainUpdate=new WindowNewUpdate(main, true,isNewUpdateAvailable,
-                CheckForUpdate.getLastBodyTxt(), CheckForUpdate.getLastTagv());
-       
-        mainUpdate.setVisible(true);
-        }
-        
+        main.setVisible(true);// show the window
     }
 //    private static void checkForUpdates(){
 //        String latestVersionNo=CheckForUpdate.getVersionfromURL();
@@ -161,6 +168,8 @@ public class FSorter extends TransferHandler {
         main.setJLabelInfo(sortedFiles+" files moved");
     }
     
+    
+    
     //reset the app - may need to be ran after every new sort
     public static void resetApp(){
         fileCount=0;
@@ -197,6 +206,8 @@ public class FSorter extends TransferHandler {
         
         // ------------- END ARGUMENT PIPE HANDLING ---------
     }
+
+    
 
     
 }
