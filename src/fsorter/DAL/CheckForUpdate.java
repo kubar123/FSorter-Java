@@ -25,6 +25,7 @@ import org.json.*;
 public class CheckForUpdate {
     // test URL TODO: change to FSorter Git URL
     private static final String UPDATE_URL="https://api.github.com/repos/kubar123/magneticKelp/releases/latest";
+    private static final String LATEST_RELEASE_URL="https://github.com/kubar123/magneticKelp/releases/latest";
     private static final Logger LOGGER = Logger.getLogger(FSorter.class.getName());
     private static String lastUsedTagv=null;
     private static String lastUsedBodyTxt=null;
@@ -47,6 +48,9 @@ public class CheckForUpdate {
         return "a";
     }
     
+    public static String get_LATEST_RELEASE_URL(){
+        return LATEST_RELEASE_URL;
+    }
     public static String getLastTagv(){
         return lastUsedTagv;
     }

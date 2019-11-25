@@ -5,6 +5,7 @@
  */
 package fsorter.GUI;
 
+import fsorter.DAL.CheckForUpdate;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -18,7 +19,7 @@ import javax.swing.JScrollPane;
  * @author Jakub Rybicki <Jake at lansoftprogramming.com>
  */
 public class WindowNewUpdate extends javax.swing.JDialog {
-    private final String LATEST_RELEASE_URL="https://api.github.com/repos/kubar123/magneticKelp/releases/latest";
+    
     private URI UrlDownload;
     /**
      * Creates new form WindowNewUpdate
@@ -136,7 +137,8 @@ public class WindowNewUpdate extends javax.swing.JDialog {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         try {
-            UrlDownload=new URI(LATEST_RELEASE_URL);
+            
+            UrlDownload=new URI(CheckForUpdate.get_LATEST_RELEASE_URL());
             java.awt.Desktop.getDesktop().browse(UrlDownload);
         } catch (IOException ex) {
             Logger.getLogger(WindowMain.class.getName()).log(Level.SEVERE, null, ex);
