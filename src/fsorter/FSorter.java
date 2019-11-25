@@ -69,7 +69,7 @@ public class FSorter extends TransferHandler {
         //if args exist, do not show GUI; use CMD methods
         argumentCheck(args);
                 
-        makeAndSowMainWindow();
+        makeAndShowMainWindow();
         
         //start accepting dropped items
         main.setTransferHandler(new FileDropHandler());
@@ -105,7 +105,7 @@ public class FSorter extends TransferHandler {
     }
     
     //makes the GUI, sets the look and feel and shows it
-    private static void makeAndSowMainWindow() {
+    private static void makeAndShowMainWindow() {
         //make UI Pretty
        try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
