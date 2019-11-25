@@ -75,8 +75,13 @@ public class FSorter extends TransferHandler {
         main.setTransferHandler(new FileDropHandler());
         
         
+        checkForNewVersion();
+       
         
-        // check for updates
+    }
+    
+    public static int checkForNewVersion(){
+         // check for updates
         int isNewUpdateAvailable=CheckForUpdate.isNewUpdateAvailable(VERSION_NO);
         //show new update GUI
         if(isNewUpdateAvailable>0){
@@ -86,7 +91,7 @@ public class FSorter extends TransferHandler {
        
             mainUpdate.setVisible(true);
         }
-        
+        return isNewUpdateAvailable;
     }
     
     //checks if the program uses arguments, if so runs the CMD methods
