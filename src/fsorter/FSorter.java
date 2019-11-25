@@ -86,7 +86,7 @@ public class FSorter extends TransferHandler {
         //show new update GUI
         if(isNewUpdateAvailable>0){
             GuiManager.printUpdateMessage(isNewUpdateAvailable);
-            WindowNewUpdate mainUpdate=new WindowNewUpdate(main, true,isNewUpdateAvailable,
+            WindowNewUpdate mainUpdate=new WindowNewUpdate(null, true,isNewUpdateAvailable,
                 CheckForUpdate.getLastBodyTxt(), CheckForUpdate.getLastTagv());
        
             mainUpdate.setVisible(true);

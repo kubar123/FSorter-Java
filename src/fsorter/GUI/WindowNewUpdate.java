@@ -33,6 +33,7 @@ public class WindowNewUpdate extends javax.swing.JDialog {
     public WindowNewUpdate(java.awt.Frame parent, boolean modal, int newVer,String infoText,String tagv) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
         if(newVer==1)       this.jLabelTop.setText("New major update available");
         else if (newVer==2) this.jLabelTop.setText("New minor update available");
         else if (newVer==3) this.jLabelTop.setText("New patch available");
@@ -60,6 +61,8 @@ public class WindowNewUpdate extends javax.swing.JDialog {
         jLabelVersion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setLocation(new java.awt.Point(0, 0));
         setResizable(false);
 
         jLabelTop.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
