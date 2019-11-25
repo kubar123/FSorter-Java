@@ -93,12 +93,7 @@ public class CheckForUpdate {
     }
     
     
-    //TODO: MAKE NEW PARSEVERSIONNUMBER METHOD
-    // -- Cannot compare versions numbers by trimming "." - 1.10.1 (1,101) < 1.19 (119)
-    // FIX:                                             expected result: >
-    // split into arry where "." are splitter
-    // compare each number in array against local verNo
-    
+       
     
     //return int:
     // 1 = new major version
