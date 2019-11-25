@@ -5,6 +5,11 @@
  */
 package fsorter.GUI;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 
@@ -13,7 +18,8 @@ import javax.swing.JScrollPane;
  * @author Jakub Rybicki <Jake at lansoftprogramming.com>
  */
 public class WindowNewUpdate extends javax.swing.JDialog {
-
+    private final String LATEST_RELEASE_URL="https://api.github.com/repos/kubar123/magneticKelp/releases/latest";
+    private URI UrlDownload;
     /**
      * Creates new form WindowNewUpdate
      */
@@ -24,7 +30,7 @@ public class WindowNewUpdate extends javax.swing.JDialog {
         //this.JTxtPaneInfo.setText(infoText);
     }
     
-    public WindowNewUpdate(java.awt.Frame parent, boolean modal, int newVer,String infoText) {
+    public WindowNewUpdate(java.awt.Frame parent, boolean modal, int newVer,String infoText,String tagv) {
         super(parent, modal);
         initComponents();
         if(newVer==1)       this.jLabelTop.setText("New major update available");
@@ -33,7 +39,9 @@ public class WindowNewUpdate extends javax.swing.JDialog {
 
         //this.jLabelTop.setText(newVer+"");
         this.JTxtPaneInfo.setText(infoText);
+        this.jLabelVersion.setText(tagv);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,6 +57,7 @@ public class WindowNewUpdate extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTxtPaneInfo = new javax.swing.JTextPane();
+        jLabelVersion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -58,12 +67,26 @@ public class WindowNewUpdate extends javax.swing.JDialog {
         jLabelTop.setPreferredSize(new java.awt.Dimension(9999, 14));
 
         jButton1.setText("Cancel");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Download");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         JTxtPaneInfo.setEditable(false);
         JTxtPaneInfo.setText("amazing");
         jScrollPane1.setViewportView(JTxtPaneInfo);
+
+        jLabelVersion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelVersion.setText("Version:");
+        jLabelVersion.setPreferredSize(new java.awt.Dimension(9999, 14));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,14 +103,17 @@ public class WindowNewUpdate extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)))
                 .addContainerGap())
+            .addComponent(jLabelVersion, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelVersion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -97,6 +123,24 @@ public class WindowNewUpdate extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    //cancel
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+    //download
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        try {
+            UrlDownload=new URI(LATEST_RELEASE_URL);
+            java.awt.Desktop.getDesktop().browse(UrlDownload);
+        } catch (IOException ex) {
+            Logger.getLogger(WindowMain.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(WindowNewUpdate.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,6 +197,7 @@ public class WindowNewUpdate extends javax.swing.JDialog {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabelTop;
+    private javax.swing.JLabel jLabelVersion;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

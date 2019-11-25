@@ -26,11 +26,14 @@ public class CheckForUpdate {
     // test URL TODO: change to FSorter Git URL
     private static final String UPDATE_URL="https://api.github.com/repos/kubar123/magneticKelp/releases/latest";
     private static final Logger LOGGER = Logger.getLogger(FSorter.class.getName());
-    public static String lastUsedBodyTxt=null;
+    private static String lastUsedTagv=null;
+    private static String lastUsedBodyTxt=null;
+    
     public static String getVersionfromURL(){
         try {
             //get JSON data
             String tagv=getTagFromUrlString(readUrl(UPDATE_URL));
+            lastUsedTagv=tagv;
             LOGGER.log(Level.INFO, "latest version is: {0}", tagv);
             
             
@@ -42,6 +45,13 @@ public class CheckForUpdate {
             LOGGER.warning("Looking for new versions error: \n "+ex.toString());
         }
         return "a";
+    }
+    
+    public static String getLastTagv(){
+        return lastUsedTagv;
+    }
+    public static String getLastBodyTxt(){
+        return lastUsedBodyTxt;
     }
     
     private static String readUrl(String urlString) throws Exception {

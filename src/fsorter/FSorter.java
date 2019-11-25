@@ -24,7 +24,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Jake Rybicki <Jake at lansoftprogramming.com>
  */
 public class FSorter extends TransferHandler {
-    private static final String VERSION_NO="0.1.1";
+    private static final String VERSION_NO="0.2.1";
     private static boolean isFileDropped=false;
     private static List<File> files=null;
     private static int fileCount=0; // Counter for qty of moved files
@@ -96,10 +96,13 @@ public class FSorter extends TransferHandler {
         int isNewUpdateAvailable=CheckForUpdate.isNewUpdateAvailable(VERSION_NO);
         
         //show GUI UI 
-        if(isNewUpdateAvailable>0)
+        if(isNewUpdateAvailable>0){
             GuiManager.printUpdateMessage(isNewUpdateAvailable);
-        WindowNewUpdate mainUpdate=new WindowNewUpdate(main, true,isNewUpdateAvailable,CheckForUpdate.lastUsedBodyTxt);
+        WindowNewUpdate mainUpdate=new WindowNewUpdate(main, true,isNewUpdateAvailable,
+                CheckForUpdate.getLastBodyTxt(), CheckForUpdate.getLastTagv());
+       
         mainUpdate.setVisible(true);
+        }
         
     }
 //    private static void checkForUpdates(){
