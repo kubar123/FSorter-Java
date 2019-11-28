@@ -169,8 +169,8 @@ public class FileSorterAI {
      
      // Moves file to the specified folder. Creates it if doesnt exit.
      private static void moveFileToNewFolder(File file, String newFolderName) {
-        File newSaveLocation=new File(file.getParent()+"\\"+newFolderName);
-        File newSave2Location=new File(newSaveLocation+"\\"+file.getName());
+        File newSaveLocation=new File(file.getParent()+"/"+newFolderName);
+        File newSave2Location=new File(newSaveLocation+"/"+file.getName());
         
         //Make new folder if not made
         boolean isDirCreated=newSaveLocation.mkdir();
