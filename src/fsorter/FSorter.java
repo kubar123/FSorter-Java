@@ -74,17 +74,17 @@ public class FSorter extends TransferHandler {
         //start accepting dropped items
         main.setTransferHandler(new FileDropHandler());
         
-        
+        //default = check for new version at startup. Disable if unwanted
         checkForNewVersion();
        
         
     }
     
     public static int checkForNewVersion(){
-         // check for updates
+         // 0 = no update, >0 = update available
         int isNewUpdateAvailable=CheckForUpdate.isNewUpdateAvailable(VERSION_NO);
-        //show new update GUI
         if(isNewUpdateAvailable>0){
+            //show new update GUI window
             GuiManager.printUpdateMessage(isNewUpdateAvailable);
             WindowNewUpdate mainUpdate=new WindowNewUpdate(null, true,isNewUpdateAvailable,
                 CheckForUpdate.getLastBodyTxt(), CheckForUpdate.getLastTagv());

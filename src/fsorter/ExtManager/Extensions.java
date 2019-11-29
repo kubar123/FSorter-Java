@@ -12,23 +12,7 @@ import java.util.EnumSet;
  * @author Jake Rybicki <Jake at lansoftprogramming.com>
  */
 public class Extensions {
-//    public static class Graphics{
-//        public static Graphics getAll(){
-//            System.out.println(colourPallet.values());
-////            return EnumSet.of(colourPallet.values(),vector.values());
-////            return colourPallet<Graphics>;
-//            return colourPallet;
-//        }
-//        public enum colourPallet{
-//            _one,_two
-//        }
-//        public enum Rester{
-//            _info,_tof,_one,_two
-//        }
-//        public enum vector{
-////            inner(Rester.values(),,asdaddas){};
-//        }
-//    }
+
     public enum Audio{
         _ape,_3gp,_aa,_aac,_aax,_act,_aiff,_amr,_au,awb,_dct,_dss,_dvf,
         _flac,_gsm,_iklax,_ivs,_m4a,_m4b,_m4p,_mmf,_mp3,_mpc,_msv,_nmf,_nsf,

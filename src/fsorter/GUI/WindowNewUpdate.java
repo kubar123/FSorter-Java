@@ -35,11 +35,12 @@ public class WindowNewUpdate extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        // -- decide which message to show based on version updates
         if(newVer==1)       this.jLabelTop.setText("New major update available");
         else if (newVer==2) this.jLabelTop.setText("New minor update available");
         else if (newVer==3) this.jLabelTop.setText("New patch available");
-
-        //this.jLabelTop.setText(newVer+"");
+        
+        //Set GUI Display
         this.JTxtPaneInfo.setText(infoText);
         this.jLabelVersion.setText(tagv);
     }
@@ -128,17 +129,18 @@ public class WindowNewUpdate extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //cancel
+    // ----------------------------- BUTTON ACTIONS ---------------------------
+    //cancel button - hide the form
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
-    //download
+    //download button
+    //Goes to the specified URL
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
         try {
-            
             UrlDownload=new URI(CheckForUpdate.get_LATEST_RELEASE_URL());
+            //Open the Internet with above URL
             java.awt.Desktop.getDesktop().browse(UrlDownload);
         } catch (IOException ex) {
             Logger.getLogger(WindowMain.class.getName()).log(Level.SEVERE, null, ex);
@@ -188,7 +190,7 @@ public class WindowNewUpdate extends javax.swing.JDialog {
             }
         });
     }
-
+// ---------------- GETTERS / SETTERS ------------------
     public void setjLabelTop(JLabel jLabelTop) {
         this.jLabelTop = jLabelTop;
     }
