@@ -6,6 +6,7 @@
 package fsorter;
 
 import fsorter.DAL.CheckForUpdate;
+import fsorter.DAL.Prefs;
 import fsorter.GUI.GuiManager;
 import fsorter.GUI.WindowMain;
 import fsorter.GUI.WindowNewUpdate;
@@ -14,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.prefs.Preferences;
 import javax.swing.JOptionPane;
 import javax.swing.TransferHandler;
 import javax.swing.UIManager;
@@ -75,9 +77,14 @@ public class FSorter extends TransferHandler {
         main.setTransferHandler(new FileDropHandler());
         
         //default = check for new version at startup. Disable if unwanted
-        checkForNewVersion();
-       
-        
+        // see if see if we should check for update at startup
+        LOGGER.info("PREFS: "+Prefs.readPreference("updateAtStartup"));
+        if(Prefs.readPreference("updateAtStartup")!=null){
+            //checkForNewVersion();
+        }else{
+            checkForNewVersion();
+        }
+
     }
     
     public static int checkForNewVersion(){
@@ -211,6 +218,8 @@ public class FSorter extends TransferHandler {
         
         // ------------- END ARGUMENT PIPE HANDLING ---------
     }
+
+ 
 
     
 

@@ -5,6 +5,7 @@
  */
 package fsorter.GUI;
 
+import fsorter.DAL.Prefs;
 import fsorter.FSorter;
 import java.io.IOException;
 import java.net.URI;
@@ -29,6 +30,14 @@ public class WindowMain extends javax.swing.JFrame {
     public WindowMain() {
         
         initComponents();
+        LOGGER.info(Prefs.readPreference("updateAtStartup"));
+        //update the UI based on if check for update 
+        String isInfo=Prefs.readPreference("updateAtStartup");
+        if(Prefs.readPreference("updateAtStartup")!=null){
+            jChkStartupUpdates.setSelected(false);
+        }else{
+            jChkStartupUpdates.setSelected(true);
+        }
     }
 
     /**
@@ -66,7 +75,7 @@ public class WindowMain extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jChkStartupUpdates = new javax.swing.JCheckBoxMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -241,10 +250,14 @@ public class WindowMain extends javax.swing.JFrame {
         jMenu2.add(jMenuItem3);
         jMenu2.add(jSeparator1);
 
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("Check for Updates at startup");
-        jCheckBoxMenuItem1.setEnabled(false);
-        jMenu2.add(jCheckBoxMenuItem1);
+        jChkStartupUpdates.setSelected(true);
+        jChkStartupUpdates.setText("Check for Updates at startup");
+        jChkStartupUpdates.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jChkStartupUpdatesActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jChkStartupUpdates);
 
         jMenuItem4.setText("Check for Updates");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -308,6 +321,16 @@ public class WindowMain extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"No new versions found");
         }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    //
+    private void jChkStartupUpdatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChkStartupUpdatesActionPerformed
+
+        if(jChkStartupUpdates.isSelected()){
+            Prefs.deletePreference("updateAtStartup");
+        }else{
+            Prefs.savePreference("updateAtStartup", "true");
+        }
+    }//GEN-LAST:event_jChkStartupUpdatesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -373,8 +396,8 @@ public class WindowMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup groupSettings;
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBox jChkIgnoreNestedFolders;
+    private javax.swing.JCheckBoxMenuItem jChkStartupUpdates;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;

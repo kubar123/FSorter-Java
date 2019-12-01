@@ -17,6 +17,10 @@ public class Prefs {
 
         prefs.put(key,value);
     }
+    public static void deletePreference(String key){
+        Preferences prefs=Preferences.userNodeForPackage(Prefs.class);
+        prefs.remove(key);
+    }
 
     public static String readPreference(String key) {
         Preferences prefs = Preferences.userNodeForPackage(Prefs.class);
@@ -27,6 +31,7 @@ public class Prefs {
     public static String getUpdatesAtStartup(){
         Preferences prefs = Preferences.userNodeForPackage(Prefs.class);
         return prefs.get("updateAtStartup","true");
+        //prefs.re
     }
     
 }
