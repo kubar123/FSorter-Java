@@ -26,7 +26,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Jake Rybicki <Jake at lansoftprogramming.com>
  */
 public class FSorter extends TransferHandler {
-    private static final String VERSION_NO="0.2.1";
+    private static final String VERSION_NO="1.0";
     private static boolean isFileDropped=false;
     private static List<File> files=null;
     private static int fileCount=0; // Counter for qty of moved files
