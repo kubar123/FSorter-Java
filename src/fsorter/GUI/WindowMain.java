@@ -30,7 +30,7 @@ public class WindowMain extends javax.swing.JFrame {
     public WindowMain() {
         
         initComponents();
-        LOGGER.info(Prefs.readPreference("updateAtStartup"));
+        //LOGGER.info(Prefs.readPreference("updateAtStartup"));
         //update the UI based on if check for update 
         String isInfo=Prefs.readPreference("updateAtStartup");
         if(Prefs.readPreference("updateAtStartup")!=null){
@@ -322,7 +322,7 @@ public class WindowMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    //
+// ------ ACTION: File -> Check for updates 
     private void jChkStartupUpdatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChkStartupUpdatesActionPerformed
 
         if(jChkStartupUpdates.isSelected()){
