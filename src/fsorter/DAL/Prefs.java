@@ -14,7 +14,6 @@ import java.util.prefs.Preferences;
 public class Prefs {
     public static void savePreference(String key,String value) {
         Preferences prefs = Preferences.userNodeForPackage(Prefs.class);
-
         prefs.put(key,value);
     }
     public static void deletePreference(String key){
@@ -24,14 +23,12 @@ public class Prefs {
 
     public static String readPreference(String key) {
         Preferences prefs = Preferences.userNodeForPackage(Prefs.class);
-
         return prefs.get(key, null);
     }
     
     public static String getUpdatesAtStartup(){
         Preferences prefs = Preferences.userNodeForPackage(Prefs.class);
         return prefs.get("updateAtStartup","true");
-        //prefs.re
     }
     
 }
