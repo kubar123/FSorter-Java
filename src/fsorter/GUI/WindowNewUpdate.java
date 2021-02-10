@@ -86,7 +86,8 @@ public class WindowNewUpdate extends javax.swing.JDialog {
         });
 
         JTxtPaneInfo.setEditable(false);
-        JTxtPaneInfo.setText("amazing");
+        JTxtPaneInfo.setText("Data not loaded?");
+        JTxtPaneInfo.setToolTipText("");
         jScrollPane1.setViewportView(JTxtPaneInfo);
 
         jLabelVersion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
